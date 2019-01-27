@@ -4,6 +4,7 @@
 // // corequatro@gmail.com
 
 using NUnit.Framework;
+using TestCases.Patterns.Structural.Adapter;
 using TestCases.Patterns.Structural.Decorator;
 
 
@@ -22,6 +23,15 @@ namespace TestCases.Patterns.Structural
             var newConfig = extendedConfig.GetCarDescription();
             Assert.AreEqual(totalPrice,70150);
             Assert.AreEqual(newConfig, "AudiA8 basic5.0L red");
+        }
+
+        [Test]
+        public void AdapterTest_CallLegacyLibFromInterface_MethodIsCalled()
+        {
+            IAdapter adapter = new Adapter.Adapter();
+            var message = adapter.Hello();
+            Assert.AreEqual(message, "legacy hello");
+
         }
     }
 }

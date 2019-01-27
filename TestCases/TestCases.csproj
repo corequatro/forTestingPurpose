@@ -26,7 +26,6 @@
     <Folder Include="Patterns\Behavioral\TemplateMethod\" />
     <Folder Include="Patterns\Creational\Builder\" />
     <Folder Include="Patterns\Creational\FactoryMethod\" />
-    <Folder Include="Patterns\Structural\Adapter\" />
     <Folder Include="Patterns\Structural\Bridge\" />
     <Folder Include="Patterns\Structural\Composite\" />
     <Folder Include="Patterns\Structural\Facade\" />
