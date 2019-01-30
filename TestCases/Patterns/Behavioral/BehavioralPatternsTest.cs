@@ -12,7 +12,7 @@ namespace TestCases.Patterns.Behavioral
     {
 
         [Test]
-        public void ObserverTest_NotifyUsersOfCurrencyChange_AllUsersAreNotified()
+        public void ObserverTest_NotifyUsersOfMessageChange_AllUsersAreNotified()
         {
             var currencyChangeNotifier = new ObjectNotifier();
             var billyGates = new Observer.Observer("Bil Gates");
