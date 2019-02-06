@@ -8,6 +8,7 @@ using NUnit.Framework;
 using TestCases.Patterns.Creational.AbstractFactory;
 using TestCases.Patterns.Creational.AbstractFactory.ElectroCars.Tesla;
 using TestCases.Patterns.Creational.AbstractFactory.GasCars.Audi;
+using TestCases.Patterns.Creational.Builder;
 using TestCases.Patterns.Creational.Prototype;
 
 namespace TestCases.Patterns.Creational
@@ -31,6 +32,23 @@ namespace TestCases.Patterns.Creational
             Assert.IsFalse(audiA8.CarId == Guid.Empty);
         }
 
+
+        [Test]
+        public void BuilderPatternTest_BuildElectroAndGasCars_CorrectVehicleTypeAreCreated()
+        {
+            VehicleBuilder builder;
+            var carShop = new CarShop();
+            builder = new ElectroCarBuilder();
+            carShop.Construct(builder);
+            Assert.AreEqual(builder.Vehicle.EngineType, "electro");
+            Assert.AreEqual(builder.Vehicle.PetrolType, "electrics");
+            builder = new PetrolCarBuilder();
+            carShop.Construct(builder);
+            Assert.AreEqual(builder.Vehicle.EngineType, "v8");
+            Assert.AreEqual(builder.Vehicle.PetrolType, "gas");
+        }
+
+
         [Test]
         public void PrototypePatternTest_CloneAnimals_CorrectTypesOfAnimalsCloned()
         {
@@ -40,13 +58,14 @@ namespace TestCases.Patterns.Creational
             Assert.AreEqual(sheep.SheepColor, sheepClone.SheepColor);
             Assert.AreEqual(typeof(Sheep).FullName, sheepClone.GetType().FullName);
             var dog = new Dog { LegQuantity = 10, DogColor = "Black" };
-            var dogClone = (Dog) dog.CloneAnimal();
+            var dogClone = (Dog)dog.CloneAnimal();
 
             Assert.AreEqual(dog.LegQuantity, dogClone.LegQuantity);
             Assert.AreEqual(dog.DogColor, dogClone.DogColor);
             Assert.AreEqual(typeof(Dog).FullName, dogClone.GetType().FullName);
 
         }
+
 
     }
 }
