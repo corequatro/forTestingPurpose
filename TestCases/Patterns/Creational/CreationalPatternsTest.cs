@@ -36,9 +36,8 @@ namespace TestCases.Patterns.Creational
         [Test]
         public void BuilderPatternTest_BuildElectroAndGasCars_CorrectVehicleTypeAreCreated()
         {
-            VehicleBuilder builder;
             var carShop = new CarShop();
-            builder = new ElectroCarBuilder();
+            VehicleBuilder builder = new ElectroCarBuilder();
             carShop.Construct(builder);
             Assert.AreEqual(builder.Vehicle.EngineType, "electro");
             Assert.AreEqual(builder.Vehicle.PetrolType, "electrics");
