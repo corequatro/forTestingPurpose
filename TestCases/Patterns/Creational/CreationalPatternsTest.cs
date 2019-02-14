@@ -9,6 +9,8 @@ using TestCases.Patterns.Creational.AbstractFactory;
 using TestCases.Patterns.Creational.AbstractFactory.ElectroCars.Tesla;
 using TestCases.Patterns.Creational.AbstractFactory.GasCars.Audi;
 using TestCases.Patterns.Creational.Builder;
+using TestCases.Patterns.Creational.FactoryMethod;
+using TestCases.Patterns.Creational.FactoryMethod.Builds;
 using TestCases.Patterns.Creational.Prototype;
 
 namespace TestCases.Patterns.Creational
@@ -62,9 +64,16 @@ namespace TestCases.Patterns.Creational
             Assert.AreEqual(dog.LegQuantity, dogClone.LegQuantity);
             Assert.AreEqual(dog.DogColor, dogClone.DogColor);
             Assert.AreEqual(typeof(Dog).FullName, dogClone.GetType().FullName);
-
         }
 
-
+        [Test]
+        public void FactoryMethodPatternTest_CreateComputers_CorrectTypesOfComputersWithComponentsCreated()
+        {
+            var computers = new Computer[2];
+            computers[0] = new PowerPc();
+            computers[1] = new OfficePc();
+            Assert.AreEqual(computers[0].Components.Count, 4);
+            Assert.AreEqual(computers[1].Components.Count, 3);
+        }
     }
 }
